@@ -8,7 +8,7 @@ public class CircleRGBtest
 
 	private static CircleRGB icon;
     private static JLabel label;
-
+    private static Color color;
 
     public static void main(String[] args)
     {
@@ -43,21 +43,22 @@ public class CircleRGBtest
     }
 
 
-    public static ActionListener colorListener(final String button){
+    public static ActionListener colorListener(final String button) {
       return new
          ActionListener()
          {
             public void actionPerformed(ActionEvent event)
             {
                if(button == "blue"){
-            	   icon.color = Color.blue;
+            	   color = Color.blue;
                }
                else if(button == "green"){
-            	   icon.color = Color.green;
+            	   color = Color.green;
                }
                else if(button == "red"){
-            	   icon.color = Color.red;
+            	   color = Color.red;
                }
+               icon.setColor(color);
                label.repaint();
             }
          };
