@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 
 /**
@@ -10,15 +10,41 @@ public class ExtendedMessageQueue
 { 
 	
 	public static void main(String [] args) {
-		ExtendedMessageQueue test = new ExtendedMessageQueue(10);
-		Message hej = new Message("hej");
-		
-		test.add(hej);
-		test.dynamicAdd(hej,hej,hej);
-		test.printList();
-		test.Multiremove(3);
+		ExtendedMessageQueue test = new ExtendedMessageQueue(5);
+		Message hej1 = new Message("1");
+		Message hej2 = new Message("2");
+		Message hej3 = new Message("3");
+		Message hej4 = new Message("4");
+		Message hej5 = new Message("5");
+		Message hej6 = new Message("6");
+		Message hej7 = new Message("7");
+		Message hej8 = new Message("8");
+		Message hej9 = new Message("9");
+		Message hej10 = new Message("10");
+		test.add(hej1);
+		test.add(hej2);
+		test.add(hej3);
+		test.add(hej4);
+		test.add(hej5);
+		test.printList(test);
+		System.out.println(test.getHead() +" this is the head");
+		System.out.println(test.getTail() + " this is the tail");
 		System.out.println();
-		test.printList();
+		test.remove();
+		test.remove();
+		test.remove();
+		test.remove();
+		test.add(hej6);
+		test.add(hej7);
+		test.add(hej8);
+		test.add(hej9);
+		test.add(hej10);
+		test.printList(test);
+		System.out.println(test.getHead() +" this is the head");
+		System.out.println(test.getTail() + " this is the tail");
+		
+		
+		
 		
 	}
    /** 
@@ -96,7 +122,7 @@ public class ExtendedMessageQueue
 		   
 	   } 
 	   
-	   else {
+	  
 			for (Message i : Messages) {
 
 				 elements[tail] = i; 
@@ -105,7 +131,7 @@ public class ExtendedMessageQueue
 
 			}
 
-		}
+		
 	}
 
    /** 
@@ -136,21 +162,47 @@ public class ExtendedMessageQueue
 	   assert size() > 0  : "Violated precondition, capacity > 0";
       return elements[head]; 
    } 
-   public void printList() {
-	   for (int i = 0; i < count; i ++) {
+  /* public void printList() {
+	   for (int i = 0; i < elements.length; i ++) {
 		   System.out.println(elements[i]);
 	   }
 	   
+   } */
+   public void printList(ExtendedMessageQueue a) {
+	   
+	   for (int i = 0; i < elements.length; i ++) {
+		 //  System.out.println(PrintElements.peek());
+		   if(elements[i]!=null) {
+		   System.out.println(elements[i]);
+		   }
+		   //PrintElements.remove();
+	
+	   }
+	   
    }
-
    
    private void doublequeue() {
-		int increasedSize = elements.length * 2;
-		this.tail = elements.length;
+	     
+		
+		Message[] elements2 = new Message[elements.length * 2];
+	
+		
+		
+		for(int i = 0; i < elements.length; i++ ) {
+			elements2[i] = remove();
+			count++;
+		}
 		this.head = 0;
-		elements = Arrays.copyOf(elements, increasedSize);
+		this.tail = count;
+		elements = elements2;
 		
 	}
+   public int getTail() {
+	   return tail;
+	   }
+	   public int getHead() {
+	 	  return head;
+	 	  }
 
    private Message[] elements; 
    private int head; 

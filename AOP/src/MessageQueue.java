@@ -86,10 +86,19 @@ public class MessageQueue
    }
    
    private void doublequeue() {
-		int increasedSize = elements.length * 2;
-		this.tail = elements.length;
+	     
+		
+		Message[] elements2 = new Message[elements.length * 2];
+	
+		
+		
+		for(int i = 0; i < elements.length; i++ ) {
+			elements2[i] = remove();
+			count++;
+		}
 		this.head = 0;
-		elements = Arrays.copyOf(elements, increasedSize);
+		this.tail = count;
+		elements = elements2;
 		
 	}
 
