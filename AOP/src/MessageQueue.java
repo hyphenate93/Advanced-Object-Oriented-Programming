@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 /** 
     A first-in, first-out bounded collection of messages. 
