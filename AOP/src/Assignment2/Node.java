@@ -20,12 +20,11 @@ public class Node<T> implements Tree<T> {
 		return children;
 	}
 	
-	public <R, A> R accept(TreeVisitor<T, R, A> v, R res, A acc) {
-		return v.visit(this, res, acc);
+	public <R, A> R accept(TreeVisitor<T, R, A> v, A acc) {
+		return v.visit(this, acc);
 	}
 
 	public String toString() {
 		return getClass().getName() + "[children = " + children + "]";
 	}
-
 }

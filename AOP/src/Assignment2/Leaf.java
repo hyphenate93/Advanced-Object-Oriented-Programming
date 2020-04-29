@@ -8,8 +8,8 @@ public class Leaf<T> implements Tree<T> {
 		value = v;
 	}
 
-	public <R, A> R accept(TreeVisitor<T, R, A> v, R res, A acc) {
-		return v.visit(this, res, acc);
+	public <R, A> R accept(TreeVisitor<T, R, A> v, A acc) {
+		return v.visit(this, acc);
 	}
 
 	public String toString() {
@@ -19,18 +19,6 @@ public class Leaf<T> implements Tree<T> {
 	public T getValue() {
 		return value;
 	}
-	/*
-	public String show(int level) {
-		return indent(level) + value.toString();
-	}
 	
-	private String indent(int level) {
-		String indent = "";
-		for(int i = 0; i < level; i++) {
-			indent = indent + "   ";
-		}
-		return indent;
-	}
-	*/
 
 }

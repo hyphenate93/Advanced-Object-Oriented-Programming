@@ -23,14 +23,18 @@ public class TestTree {
 		List<Tree<String>> lst = new ArrayList<Tree<String>>();
 		lst.add(t1);
 		lst.add(t2);
+		lst.add(t1);
 		
 		Tree<String> t = new Node<String>(lst, "root:");
 		
-		List<String> llvResult = new ArrayList<String>();
-		List<Integer> llvLevel = new ArrayList<Integer>();
-		TreeVisitor<String, List<String>, List<Integer>> llv = new PrettyPrinterVisitor<String>();
+		TreeVisitor<String, String, Integer> llv = new PrettyPrinterVisitor<String>();
 		
-		t.accept(llv, llvResult, llvLevel);
-		llv.show(llvResult, llvLevel);
-	}
+		List<String> result = new ArrayList<String>();
+
+		result.add(t.accept(llv, 0));
+		for(String s : result){
+			System.out.println(s);
+
+		}	
+    }
 }
