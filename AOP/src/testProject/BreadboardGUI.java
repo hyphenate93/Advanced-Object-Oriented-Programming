@@ -99,7 +99,7 @@ public class BreadboardGUI {
             public void mouseReleased(MouseEvent e){}
         });
         final JScrollPane scroll = new JScrollPane(text);
-        frame.getContentPane().add(scroll, BorderLayout.EAST);
+        frame.getContentPane().add(scroll, BorderLayout.WEST);
 
 
         panel.addMouseListener(new MouseListener() {
@@ -221,7 +221,7 @@ public class BreadboardGUI {
     // method to add buttons to toolBar.
     public static JButton makeButton(String imageName, String
             toolTipText, String altText) {
-    	JButton button = new JButton(imageName);
+	JButton button = new JButton(imageName);
 		return button;
     }
 
